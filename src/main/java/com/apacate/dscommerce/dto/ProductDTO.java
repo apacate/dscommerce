@@ -1,13 +1,22 @@
 package com.apacate.dscommerce.dto;
 
 import com.apacate.dscommerce.entities.Product;
-import jakarta.persistence.Column;
+import jakarta.validation.constraints.*;
+
 
 public class ProductDTO {
 
     private Long id;
+
+    @Size(min = 3, max = 80, message = "O tamanho deve estar entre 3 e 80 caracteres")
+    @NotBlank(message = "Campo requerido")
     private String name;
+
+    @Size(min = 10, message = "A descricao deve ter no minimo 10 caracteres")
+    @NotBlank(message = "Campo requerido")
     private String description;
+
+    @PositiveOrZero(message = "O valor deve ser maior ou igual a zero")
     private Double price;
     private String imagUrl;
 
